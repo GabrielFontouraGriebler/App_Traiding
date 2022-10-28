@@ -2,6 +2,7 @@ package com.example.app;
 
 public class AnotacaoDiario {
 
+    public Object setId;
     private int data;
     private float saldoPosOp;
     private String observacao;
@@ -44,5 +45,8 @@ public class AnotacaoDiario {
 
     public Long getId() {
         return null;
+    }
+
+    public void setId(long aLong) {
     }
 }

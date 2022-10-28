@@ -6,10 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Relatorio extends AppCompatActivity {
 
     private Button buttonAnotacao;
+
+    private ListView ListViewAnotacoes;
+    private List<AnotacaoDiario> anotacaoLista;
+    private AdapterListaAnotacao adapterListaAnotacao;
 
 
     @Override
@@ -30,6 +38,15 @@ public class Relatorio extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Relatorio.this));
+        anotacaoLista = anotacaoCtrl.getListaAnotacaoCtrl();
+
+        this.ListViewAnotacoes = (ListView) findViewById(R.id.ListViewAnotacoes);    
+
+        this.adapterListaAnotacao = new AdapterListaAnotacao(Relatorio.this, anotacaoLista);
+
+        this.ListViewAnotacoes.setAdapter(this.adapterListaAnotacao);
 
     }
 }

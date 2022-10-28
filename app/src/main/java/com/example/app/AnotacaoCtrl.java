@@ -1,5 +1,7 @@
 package com.example.app;
 
+import java.util.List;
+
 public class AnotacaoCtrl {
 
     private final AnotacaoDAO anotacaoDAO;
@@ -10,6 +12,10 @@ public class AnotacaoCtrl {
 
     public long salvarAnotacaoCtrl(AnotacaoDiario aAnotacaoDiario){
         return this.anotacaoDAO.salvarAnotacaoDAO(aAnotacaoDiario);
+    }
+
+    public List<AnotacaoDiario> getListaAnotacaoCtrl(){
+        return this.anotacaoDAO.getListaAnotacaoDAO();
     }
 
 }

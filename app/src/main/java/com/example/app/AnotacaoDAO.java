@@ -1,7 +1,12 @@
 package com.example.app;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnotacaoDAO {
 
@@ -29,10 +34,55 @@ public class AnotacaoDAO {
 
         }catch(Exception e){
             e.printStackTrace();
+        }finally {
+            if(db != null){
+                db.close();
+            }
         }
 
         return 0;
 
     }
 
+    public List<AnotacaoDiario> getListaAnotacaoDAO(){
+
+        List<AnotacaoDiario> ListaAnotacao = new ArrayList<>();
+        SQLiteDatabase db = null;
+        Cursor cursor;
+
+        String query = "SELECT * FROM anotacoes;";
+
+        try{
+
+            db = this.conexaoSQLiteDiario.getReadableDatabase();
+
+            cursor = db.rawQuery(query, null);
+
+            if (cursor.moveToFirst()){
+
+                AnotacaoDiario anotacaoDiarioTemp = null;
+
+                do {
+
+                    anotacaoDiarioTemp = new AnotacaoDiario();
+                    anotacaoDiarioTemp.setId(cursor.getLong(0));
+                    anotacaoDiarioTemp.setData(cursor.getInt(1));
+                    anotacaoDiarioTemp.setSaldoPosOp(cursor.getFloat(3));
+                    anotacaoDiarioTemp.setObservacao(cursor.getString(4));
+
+                    ListaAnotacao.add(anotacaoDiarioTemp);
+
+                }while (cursor.moveToNext());
+            }
+
+        }catch (Exception e){
+            Log.d("ERRO LISTA PRODUTOS","ERRO AO RETORNAR PRODUTOS");
+            return null;
+        }finally {
+            if (db != null);
+            db.close();
+        }
+
+        return ListaAnotacao;
+    }
 }

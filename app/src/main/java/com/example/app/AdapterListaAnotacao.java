@@ -11,9 +11,9 @@ import java.util.List;
 public class AdapterListaAnotacao extends BaseAdapter {
 
     private Context context;
-    private List<Anotacao> AnotacaoList;
+    private List<AnotacaoDiario> AnotacaoList;
 
-    public AdapterListaAnotacao(Context context, List<Anotacao> anotacaoList) {
+    public AdapterListaAnotacao(Context context, List<AnotacaoDiario> anotacaoList) {
         this.context = context;
         this.AnotacaoList = anotacaoList;
     }
@@ -33,6 +33,11 @@ public class AdapterListaAnotacao extends BaseAdapter {
         return posicao;
     }
 
+    public void removerAnotacao(int posicao){
+        this.AnotacaoList.remove(posicao);
+        notifyDataSetChanged();
+    }
+
     @Override
     public View getView(int posicao, View view, ViewGroup viewGroup) {
 
@@ -41,9 +46,9 @@ public class AdapterListaAnotacao extends BaseAdapter {
         TextView textViewDataAnotacao = (TextView) v.findViewById(R.id.textViewDataAnotacao);
         TextView textViewSaldoPosOp = (TextView) v.findViewById(R.id.textViewSaldoPosOp);
 
-        textViewDataAnotacao.setText(String.valueOf(this.AnotacaoList.get(posicao).()))
-        textViewSaldoPosOp.setText(String.valueOf(this.AnotacaoList.get(posicao).get));
+        textViewDataAnotacao.setText(String.valueOf(this.AnotacaoList.get(posicao).getData()));
+        textViewSaldoPosOp.setText(String.valueOf(this.AnotacaoList.get(posicao).getSaldoPosOp()));
 
-        return null;
+        return v;
     }
 }
