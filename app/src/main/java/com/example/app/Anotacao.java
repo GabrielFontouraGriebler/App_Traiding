@@ -47,7 +47,7 @@ public class Anotacao extends AppCompatActivity {
                 if(anotacaoACadastrar != null){
 
                     AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Anotacao.this));
-                    long idAnotacao = AnotacaoCtrl.salvarAnotacaoCtrl(anotacaoACadastrar);
+                    long idAnotacao = anotacaoCtrl.salvarAnotacaoCtrl(anotacaoACadastrar);
 
                     if(idAnotacao > 0){
                         Toast.makeText(Anotacao.this, "Anotação salva com sucesso", Toast.LENGTH_LONG).show();

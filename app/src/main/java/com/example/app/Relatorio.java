@@ -11,6 +11,7 @@ public class Relatorio extends AppCompatActivity {
 
     private Button buttonAnotacao;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
