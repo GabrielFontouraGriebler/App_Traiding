@@ -2,7 +2,7 @@ package com.example.app;
 
 public class AnotacaoDiario {
 
-    public Object Id;
+    public Long Id;
     private int data;
     private double saldoPosOp;
     private String observacao;
@@ -37,6 +37,7 @@ public class AnotacaoDiario {
     @Override
     public String toString() {
         return "AnotacaoDiario{" +
+                "Id=" + Id +
                 "data=" + data +
                 ", saldoPosOp=" + saldoPosOp +
                 ", observacao='" + observacao + '\'' +

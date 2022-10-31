@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AnotacaoDAO {
 
-    private final ConexaoSQLiteDiario conexaoSQLiteDiario;
+    private ConexaoSQLiteDiario conexaoSQLiteDiario;
 
     public AnotacaoDAO(ConexaoSQLiteDiario conexaoSQLiteDiario) {
         this.conexaoSQLiteDiario = conexaoSQLiteDiario;
@@ -65,10 +65,10 @@ public class AnotacaoDAO {
                 do {
 
                     anotacaoDiarioTemp = new AnotacaoDiario();
-                    anotacaoDiarioTemp.setId(cursor.getInt(0));
+                    anotacaoDiarioTemp.setId(cursor.getLong(0));
                     anotacaoDiarioTemp.setData(cursor.getInt(1));
-                    anotacaoDiarioTemp.setSaldoPosOp(cursor.getFloat(3));
-                    anotacaoDiarioTemp.setObservacao(cursor.getString(4));
+                    anotacaoDiarioTemp.setSaldoPosOp(cursor.getDouble(2));
+                    anotacaoDiarioTemp.setObservacao(cursor.getString(3));
 
                     ListaAnotacao.add(anotacaoDiarioTemp);
 
@@ -85,5 +85,32 @@ public class AnotacaoDAO {
 
         return ListaAnotacao;
     }
+
+    public boolean excluirAnotacaoDAO(long pIdAnotacao){
+        SQLiteDatabase db = null;
+
+        try{
+
+            db = this.conexaoSQLiteDiario.getWritableDatabase();
+
+            db.delete(
+                    "anotacoes",
+                    "data = ?",
+                    new String[]{String.valueOf(pIdAnotacao)}
+            );
+
+        }catch(Exception e){
+            Log.d("ANOTACAODAO", "NÃO FOI POSSIVEL DELETAR ANOTAÇÃO");
+            return false;
+        }finally {
+            if(db != null){
+                db.close();
+            }
+        }
+
+        return true;
+    }
+
+
 
    }

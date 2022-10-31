@@ -29,7 +29,7 @@ public class ConexaoSQLiteDiario extends SQLiteOpenHelper {
         String sqlTabelaDiario =
                 "CREATE TABLE IF NOT EXISTS anotacoes" +
                         "(" +
-                        "id INTEGER PRIMARY KEY," +
+                        "id INTEGER PRIMARY KEY autoincrement," +
                         "data DATE," +
                         "saldo_pos_op REAL," +
                         "observacao TEXT" +

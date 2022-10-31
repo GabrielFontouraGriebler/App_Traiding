@@ -18,5 +18,9 @@ public class AnotacaoCtrl {
         return this.anotacaoDAO.getListaAnotacaoDAO();
     }
 
+    public boolean excluirAnotacaoCtrl(long pIdProduto){
+        return this.anotacaoDAO.excluirAnotacaoDAO(pIdProduto);
+    }
+
 
 }
