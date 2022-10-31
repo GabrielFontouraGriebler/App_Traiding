@@ -2,6 +2,7 @@ package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,6 @@ public class Anotacao extends AppCompatActivity {
 
         this.clickNoBotaoSalvarListener();
 
-
     }
 
     private void clickNoBotaoSalvarListener(){
@@ -49,8 +49,12 @@ public class Anotacao extends AppCompatActivity {
                     AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Anotacao.this));
                     long idAnotacao = anotacaoCtrl.salvarAnotacaoCtrl(anotacaoACadastrar);
 
+
                     if(idAnotacao > 0){
                         Toast.makeText(Anotacao.this, "Anotação salva com sucesso", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Anotacao.this, Relatorio.class);
+                        startActivity(intent);
+
                     }else{
                         Toast.makeText(Anotacao.this, "Anotação não pode ser salva", Toast.LENGTH_LONG).show();
                     }
@@ -61,6 +65,7 @@ public class Anotacao extends AppCompatActivity {
 
             }
         });
+
 
     }
 

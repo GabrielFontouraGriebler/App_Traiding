@@ -2,9 +2,9 @@ package com.example.app;
 
 public class AnotacaoDiario {
 
-    public Object setId;
+    public Object Id;
     private int data;
-    private float saldoPosOp;
+    private double saldoPosOp;
     private String observacao;
 
     public AnotacaoDiario() {
@@ -18,11 +18,11 @@ public class AnotacaoDiario {
         this.data = data;
     }
 
-    public float getSaldoPosOp() {
+    public double getSaldoPosOp() {
         return saldoPosOp;
     }
 
-    public void setSaldoPosOp(float saldoPosOp) {
+    public void setSaldoPosOp(double saldoPosOp) {
         this.saldoPosOp = saldoPosOp;
     }
 

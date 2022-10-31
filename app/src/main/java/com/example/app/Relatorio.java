@@ -42,11 +42,16 @@ public class Relatorio extends AppCompatActivity {
         AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Relatorio.this));
         anotacaoLista = anotacaoCtrl.getListaAnotacaoCtrl();
 
-        this.ListViewAnotacoes = (ListView) findViewById(R.id.ListViewAnotacoes);    
 
-        this.adapterListaAnotacao = new AdapterListaAnotacao(Relatorio.this, anotacaoLista);
+        this.anotacaoLista = new ArrayList<>();
+
+        this.ListViewAnotacoes = (ListView) findViewById(R.id.ListViewAnotacoes);
+
+        this.adapterListaAnotacao = new AdapterListaAnotacao(Relatorio.this, this.anotacaoLista);
 
         this.ListViewAnotacoes.setAdapter(this.adapterListaAnotacao);
 
     }
+
+
 }

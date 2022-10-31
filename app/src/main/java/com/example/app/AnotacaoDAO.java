@@ -65,7 +65,7 @@ public class AnotacaoDAO {
                 do {
 
                     anotacaoDiarioTemp = new AnotacaoDiario();
-                    anotacaoDiarioTemp.setId(cursor.getLong(0));
+                    anotacaoDiarioTemp.setId(cursor.getInt(0));
                     anotacaoDiarioTemp.setData(cursor.getInt(1));
                     anotacaoDiarioTemp.setSaldoPosOp(cursor.getFloat(3));
                     anotacaoDiarioTemp.setObservacao(cursor.getString(4));
@@ -85,4 +85,5 @@ public class AnotacaoDAO {
 
         return ListaAnotacao;
     }
-}
+
+   }
