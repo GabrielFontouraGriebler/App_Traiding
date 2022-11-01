@@ -111,6 +111,36 @@ public class AnotacaoDAO {
         return true;
     }
 
+    public boolean atualizarAnotacaoDAO(AnotacaoDiario pAnotacaoDiario){
+        SQLiteDatabase db = null;
+
+        try{
+
+            db = this.conexaoSQLiteDiario.getWritableDatabase();
+
+            ContentValues anotacaoAtributos = new ContentValues();
+            anotacaoAtributos.put("data", pAnotacaoDiario.getData());
+            anotacaoAtributos.put("saldo_pos_op", pAnotacaoDiario.getSaldoPosOp());
+            anotacaoAtributos.put("observacao", pAnotacaoDiario.getObservacao());
+
+            int atualizou = db.update("anotacoes",
+                    anotacaoAtributos,
+                    "data = ?",
+                    new String[]{String.valueOf(pAnotacaoDiario.getData())}
+                    );
+
+            if(atualizou > 0);
+            return true;
+
+        }catch (Exception e){
+            Log.d("ANOTACAODAO", "Não foi possivel atualizar anotacao");
+            return false;
+        }finally {
+            if(db != null);{
+                db.close();
+            }
+        }
+    }
 
 
    }

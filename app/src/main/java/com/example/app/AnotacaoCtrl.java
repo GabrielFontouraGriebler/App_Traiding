@@ -22,5 +22,9 @@ public class AnotacaoCtrl {
         return this.anotacaoDAO.excluirAnotacaoDAO(pIdProduto);
     }
 
+    public boolean atualizarAnotacaoCtrl(AnotacaoDiario pAnotacaoDiario){
+        return this.anotacaoDAO.atualizarAnotacaoDAO(pAnotacaoDiario);
+    }
+
 
 }

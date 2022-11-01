@@ -100,7 +100,17 @@ public class Relatorio extends AppCompatActivity {
                 janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+
+                        Bundle bundleDadosAnotacao = new Bundle();
+
+                        bundleDadosAnotacao.putInt("data_anotacao", anotacaoSelecionada.getData());
+                        bundleDadosAnotacao.putDouble("saldo_pos_op", anotacaoSelecionada.getSaldoPosOp());
+                        bundleDadosAnotacao.putString("observacao_anotacao", anotacaoSelecionada.getObservacao());
+
+                        Intent intentEditarProdutos = new Intent(Relatorio.this, AntacaoEditar.class);
+                        intentEditarProdutos.putExtras(bundleDadosAnotacao);
+                        startActivity(intentEditarProdutos);
+
                     }
                 });
 
