@@ -12,19 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AntacaoEditar"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Anotacao"
-            android:label="Nova Anotação"
-            android:exported="true">
+            android:exported="true"
+            android:label="Nova Anotação">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Relatorio"
-            android:label="Relatório"
-            android:exported="true">
+            android:exported="true"
+            android:label="Relatório">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

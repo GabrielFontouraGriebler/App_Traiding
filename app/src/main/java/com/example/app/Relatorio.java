@@ -85,9 +85,12 @@ public class Relatorio extends AppCompatActivity {
                         dialogInterface.cancel();
 
                         if(excluiu == true){
-                            Toast.makeText(Relatorio.this, "Produto excluido com sucesso", Toast.LENGTH_SHORT).show();
+
+                            adapterListaAnotacao.removerAnotacao(posicao);
+
+                            Toast.makeText(Relatorio.this, "Anotação excluida com sucesso", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(Relatorio.this, "Erro ao excluir produto", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Relatorio.this, "Erro ao excluir anotação", Toast.LENGTH_SHORT).show();
                         }
 
 

@@ -1,4 +1,4 @@
-                                                                                                    package com.example.app;
+package com.example.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-                                                                                                    public class Planejamento extends AppCompatActivity {
+public class Planejamento extends AppCompatActivity {
 
     private Button buttonPlanejamento;
 
