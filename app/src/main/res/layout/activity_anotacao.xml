@@ -26,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:digits="0123456789.,"
         android:inputType="numberDecimal" />
 
     <Space
@@ -38,7 +39,7 @@
         android:layout_height="wrap_content"
         android:hint="Preencha com alguma Observação"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
          />
 
     <Space

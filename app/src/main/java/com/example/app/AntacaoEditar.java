@@ -37,7 +37,7 @@ public class AntacaoEditar extends AppCompatActivity {
         AnotacaoDiario anotacaoDiario = new AnotacaoDiario();
 
         anotacaoDiario.setData(bundleDadosAnotacao.getInt("data_anotacao"));
-        anotacaoDiario.setSaldoPosOp(bundleDadosAnotacao.getDouble("saldo_po_op"));
+        anotacaoDiario.setSaldoPosOp(bundleDadosAnotacao.getDouble("saldo_pos_op"));
         anotacaoDiario.setObservacao(bundleDadosAnotacao.getString("observacao_anotacao"));
 
         this.setDadosAnotacao(anotacaoDiario);
@@ -65,7 +65,7 @@ public class AntacaoEditar extends AppCompatActivity {
             return null;
         }
         if (editTextSaldoPosOP.getText().toString().isEmpty() == false) {
-            float saldoPosOp = Float.parseFloat(this.editTextSaldoPosOP.getText().toString());
+            double saldoPosOp = Double.parseDouble(this.editTextSaldoPosOP.getText().toString());
             this.anotacaoDiario.setSaldoPosOp(saldoPosOp);
         } else {
             return null;

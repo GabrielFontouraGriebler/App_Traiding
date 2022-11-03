@@ -80,7 +80,7 @@ public class Anotacao extends AppCompatActivity {
             return null;
         }
         if(editTextSaldoPosOP.getText().toString().isEmpty() == false){
-            float saldoPosOp = Float.parseFloat(this.editTextSaldoPosOP.getText().toString());
+            double saldoPosOp = Double.parseDouble(this.editTextSaldoPosOP.getText().toString());
             this.anotacaoDiario.setSaldoPosOp(saldoPosOp);
         } else {
             return null;
