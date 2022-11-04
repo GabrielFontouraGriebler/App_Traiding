@@ -29,6 +29,8 @@ public class Anotacao extends AppCompatActivity {
         editTextSaldoPosOP = (EditText) findViewById(R.id.editTextSaldoPosOP);
         editTextObservacao = (EditText) findViewById(R.id.editTextObservacao);
 
+
+
         buttonSalvarAnotacao = (Button) findViewById(R.id.buttonSalvarAnotacao);
 
         this.clickNoBotaoSalvarListener();

@@ -26,6 +26,8 @@ public class AnotacaoDAO {
             values.put("id", aAnotacaoDiario.getId());
             values.put("data", aAnotacaoDiario.getData());
             values.put("saldo_pos_op", aAnotacaoDiario.getSaldoPosOp());
+            values.put("lucroPrejuizo", aAnotacaoDiario.getLucroPrejuizo());
+
             values.put("observacao", aAnotacaoDiario.getObservacao());
 
             long idAnotacaoInserido = db.insert("anotacoes", null, values);
@@ -68,7 +70,8 @@ public class AnotacaoDAO {
                     anotacaoDiarioTemp.setId(cursor.getLong(0));
                     anotacaoDiarioTemp.setData(cursor.getInt(1));
                     anotacaoDiarioTemp.setSaldoPosOp(cursor.getDouble(2));
-                    anotacaoDiarioTemp.setObservacao(cursor.getString(3));
+                    anotacaoDiarioTemp.setLucroPrejuizo(cursor.getDouble(3));
+                    anotacaoDiarioTemp.setObservacao(cursor.getString(4));
 
                     ListaAnotacao.add(anotacaoDiarioTemp);
 
@@ -121,6 +124,7 @@ public class AnotacaoDAO {
             ContentValues anotacaoAtributos = new ContentValues();
             anotacaoAtributos.put("data", pAnotacaoDiario.getData());
             anotacaoAtributos.put("saldo_pos_op", pAnotacaoDiario.getSaldoPosOp());
+
             anotacaoAtributos.put("observacao", pAnotacaoDiario.getObservacao());
 
             int atualizou = db.update("anotacoes",

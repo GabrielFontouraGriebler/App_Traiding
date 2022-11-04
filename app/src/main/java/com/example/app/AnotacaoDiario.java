@@ -5,6 +5,7 @@ public class AnotacaoDiario {
     public Long Id;
     private int data;
     private double saldoPosOp;
+    private double lucroPrejuizo;
     private String observacao;
 
     public AnotacaoDiario() {
@@ -34,12 +35,21 @@ public class AnotacaoDiario {
         this.observacao = observacao;
     }
 
+    public double getLucroPrejuizo() {
+        return lucroPrejuizo;
+    }
+
+    public void setLucroPrejuizo(double lucroPrejuizo) {
+        this.lucroPrejuizo = lucroPrejuizo;
+    }
+
     @Override
     public String toString() {
         return "AnotacaoDiario{" +
                 "Id=" + Id +
                 "data=" + data +
                 ", saldoPosOp=" + saldoPosOp +
+                ", lucroPrejuizo=" + lucroPrejuizo +
                 ", observacao='" + observacao + '\'' +
                 '}';
     }

@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Relatorio extends AppCompatActivity {
@@ -55,10 +54,10 @@ public class Relatorio extends AppCompatActivity {
 
         this.ListViewAnotacoes.setAdapter(this.adapterListaAnotacao);
 
-        this.ListViewAnotacoes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        this.ListViewAnotacoes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
 
                 final AnotacaoDiario anotacaoSelecionada = (AnotacaoDiario) adapterListaAnotacao.getItem(posicao);
 
@@ -97,7 +96,7 @@ public class Relatorio extends AppCompatActivity {
                     }
                 });
 
-                janelaDeEscolha.setPositiveButton("Editar", new DialogInterface.OnClickListener() {
+                janelaDeEscolha.setPositiveButton("Detalhes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -116,7 +115,6 @@ public class Relatorio extends AppCompatActivity {
 
                 janelaDeEscolha.create().show();
 
-                return false;
             }
         });
 

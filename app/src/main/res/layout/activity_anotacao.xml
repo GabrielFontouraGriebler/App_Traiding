@@ -33,6 +33,17 @@
         android:layout_width="match_parent"
         android:layout_height="15dp"/>
 
+    <TextView
+        android:id="@+id/textViewLucroPrejuizo"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:ems="10"
+        android:textSize="18sp" />
+
+    <Space
+    android:layout_width="match_parent"
+    android:layout_height="75dp"/>
+
     <EditText
         android:id="@+id/editTextObservacao"
         android:layout_width="match_parent"
@@ -51,4 +62,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar Anotação" />
+
 </LinearLayout>
