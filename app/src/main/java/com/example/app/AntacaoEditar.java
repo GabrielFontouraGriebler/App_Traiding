@@ -18,7 +18,7 @@ public class AntacaoEditar extends AppCompatActivity {
     private EditText editTextData;
     private EditText editTextSaldoPosOP;
     private EditText editTextObservacao;
-    private TextView textViewLucroPrejuizo1;
+
 
 
     private Button buttonSalvarAlteracoes;
@@ -34,7 +34,7 @@ public class AntacaoEditar extends AppCompatActivity {
         this.editTextData = (EditText) findViewById(R.id.editTextData);
         this.editTextSaldoPosOP = (EditText) findViewById(R.id.editTextSaldoPosOP);
         this.editTextObservacao = (EditText) findViewById(R.id.editTextObservacao);
-        this.textViewLucroPrejuizo1 = (TextView) findViewById(R.id.textViewLucroPrejuizo1);
+
 
 
 
@@ -49,7 +49,7 @@ public class AntacaoEditar extends AppCompatActivity {
         anotacaoDiario.setData(bundleDadosAnotacao.getInt("data_anotacao"));
         anotacaoDiario.setSaldoPosOp(bundleDadosAnotacao.getDouble("saldo_pos_op"));
         anotacaoDiario.setObservacao(bundleDadosAnotacao.getString("observacao_anotacao"));
-        textViewLucroPrejuizo1.setText(Double.toString(bundleDadosAnotacao.getDouble("saldo_pos_op")));
+
 
         this.setDadosAnotacao(anotacaoDiario);
 

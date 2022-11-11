@@ -5,7 +5,7 @@ public class AnotacaoDiario {
     public Long Id;
     private int data;
     private double saldoPosOp;
-    private double lucroPrejuizo;
+    private String lucroPrejuizo;
     private String observacao;
 
     public AnotacaoDiario() {
@@ -35,11 +35,11 @@ public class AnotacaoDiario {
         this.observacao = observacao;
     }
 
-    public double getLucroPrejuizo() {
+    public String getLucroPrejuizo() {
         return lucroPrejuizo;
     }
 
-    public void setLucroPrejuizo(double lucroPrejuizo) {
+    public void setLucroPrejuizo(String lucroPrejuizo) {
         this.lucroPrejuizo = lucroPrejuizo;
     }
 

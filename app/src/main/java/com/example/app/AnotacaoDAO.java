@@ -70,7 +70,7 @@ public class AnotacaoDAO {
                     anotacaoDiarioTemp.setId(cursor.getLong(0));
                     anotacaoDiarioTemp.setData(cursor.getInt(1));
                     anotacaoDiarioTemp.setSaldoPosOp(cursor.getDouble(2));
-                    anotacaoDiarioTemp.setLucroPrejuizo(cursor.getDouble(3));
+                    anotacaoDiarioTemp.setLucroPrejuizo(cursor.getString(3));
                     anotacaoDiarioTemp.setObservacao(cursor.getString(4));
 
                     ListaAnotacao.add(anotacaoDiarioTemp);
