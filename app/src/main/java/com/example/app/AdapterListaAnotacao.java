@@ -40,14 +40,17 @@ public class AdapterListaAnotacao extends BaseAdapter {
 
     @Override
     public View getView(int posicao, View view, ViewGroup viewGroup) {
+        //AQUI DEFINE OS CAMPOS QUE VAO APARECER NA LISTVIEW
 
         View v = View.inflate(this.context, R.layout.layout_anotacao, null); 
 
         TextView textViewDataAnotacao = (TextView) v.findViewById(R.id.textViewDataAnotacao);
         TextView textViewSaldoPosOp = (TextView) v.findViewById(R.id.textViewSaldoPosOp);
+        TextView textViewLucroPrejuizo = (TextView) v.findViewById(R.id.textViewLucroPrejuizo);
 
         textViewDataAnotacao.setText(String.valueOf(this.AnotacaoList.get(posicao).getData()));
         textViewSaldoPosOp.setText(String.valueOf(this.AnotacaoList.get(posicao).getSaldoPosOp()));
+        textViewLucroPrejuizo.setText(String.valueOf(this.AnotacaoList.get(posicao).getLucroPrejuizo()));
 
         return v;
     }

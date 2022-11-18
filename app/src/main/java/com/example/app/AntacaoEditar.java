@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.time.temporal.Temporal;
 
 public class AntacaoEditar extends AppCompatActivity {
 
@@ -19,6 +16,7 @@ public class AntacaoEditar extends AppCompatActivity {
     private EditText editTextSaldoPosOP;
     private EditText editTextObservacao;
 
+    private TextView textViewLucroPrejuizo;
 
 
     private Button buttonSalvarAlteracoes;
@@ -35,12 +33,20 @@ public class AntacaoEditar extends AppCompatActivity {
         this.editTextSaldoPosOP = (EditText) findViewById(R.id.editTextSaldoPosOP);
         this.editTextObservacao = (EditText) findViewById(R.id.editTextObservacao);
 
+        textViewLucroPrejuizo = (TextView) findViewById(R.id.textViewLucroPrejuizo);
+
+        //Botão que vai calcular e projetar as informações de lucro e prejuizo no text view
+        final Button buttonCalculaLucroPrejuizo = (Button) findViewById(R.id.buttonCalculaLucroPrejuizo);
+        buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
+            }
+        });
 
 
 
-
-
-        this.buttonSalvarAlteracoes = (Button) findViewById(R.id.buttonSalvarAnotacao);
+        this.buttonSalvarAlteracoes = (Button) findViewById(R.id.buttonSalvarAlteracao);
 
         Bundle bundleDadosAnotacao = getIntent().getExtras();
 
@@ -48,6 +54,8 @@ public class AntacaoEditar extends AppCompatActivity {
 
         anotacaoDiario.setData(bundleDadosAnotacao.getInt("data_anotacao"));
         anotacaoDiario.setSaldoPosOp(bundleDadosAnotacao.getDouble("saldo_pos_op"));
+        //se deixar com essa parte do texto, ao abrir a pagina ele busca a informação salva no banco
+        anotacaoDiario.setLucroPrejuizo(bundleDadosAnotacao.getString("lucroPrejuizo"));
         anotacaoDiario.setObservacao(bundleDadosAnotacao.getString("observacao_anotacao"));
 
 
@@ -61,6 +69,7 @@ public class AntacaoEditar extends AppCompatActivity {
 
         this.editTextData.setText(String.valueOf(anotacaoDiario.getData()));
         this.editTextSaldoPosOP.setText(String.valueOf(anotacaoDiario.getSaldoPosOp()));
+        this.textViewLucroPrejuizo.setText(anotacaoDiario.getLucroPrejuizo());
         this.editTextObservacao.setText(anotacaoDiario.getObservacao());
 
     }
@@ -78,6 +87,11 @@ public class AntacaoEditar extends AppCompatActivity {
         if (editTextSaldoPosOP.getText().toString().isEmpty() == false) {
             double saldoPosOp = Double.parseDouble(this.editTextSaldoPosOP.getText().toString());
             this.anotacaoDiario.setSaldoPosOp(saldoPosOp);
+        } else {
+            return null;
+        }
+        if(textViewLucroPrejuizo.getText().toString().isEmpty() == false){
+            this.anotacaoDiario.setLucroPrejuizo((this.textViewLucroPrejuizo.getText().toString()));
         } else {
             return null;
         }

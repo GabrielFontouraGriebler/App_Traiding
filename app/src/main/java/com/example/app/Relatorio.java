@@ -104,6 +104,8 @@ public class Relatorio extends AppCompatActivity {
 
                         bundleDadosAnotacao.putInt("data_anotacao", anotacaoSelecionada.getData());
                         bundleDadosAnotacao.putDouble("saldo_pos_op", anotacaoSelecionada.getSaldoPosOp());
+                        bundleDadosAnotacao.putString("lucroPrejuizo", anotacaoSelecionada.getLucroPrejuizo());
+
                         bundleDadosAnotacao.putString("observacao_anotacao", anotacaoSelecionada.getObservacao());
 
                         Intent intentEditarProdutos = new Intent(Relatorio.this, AntacaoEditar.class);

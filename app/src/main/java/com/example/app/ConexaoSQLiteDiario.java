@@ -32,7 +32,7 @@ public class ConexaoSQLiteDiario extends SQLiteOpenHelper {
                         "id INTEGER PRIMARY KEY autoincrement," +
                         "data DATE," +
                         "saldo_pos_op REAL," +
-                        "lucroPrejuizo REAL," +
+                        "lucroPrejuizo TEXT," +
                         "observacao TEXT" +
                         ")";
         sqLiteDatabase.execSQL(sqlTabelaDiario);

@@ -53,7 +53,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/buttonSalvarAnotacao"
+        android:id="@+id/buttonSalvarAlteracao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="252dp"

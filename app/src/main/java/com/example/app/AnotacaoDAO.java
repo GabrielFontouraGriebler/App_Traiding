@@ -124,6 +124,7 @@ public class AnotacaoDAO {
             ContentValues anotacaoAtributos = new ContentValues();
             anotacaoAtributos.put("data", pAnotacaoDiario.getData());
             anotacaoAtributos.put("saldo_pos_op", pAnotacaoDiario.getSaldoPosOp());
+            anotacaoAtributos.put("lucroPrejuizo", pAnotacaoDiario.getLucroPrejuizo());
 
             anotacaoAtributos.put("observacao", pAnotacaoDiario.getObservacao());
 

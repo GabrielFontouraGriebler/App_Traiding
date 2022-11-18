@@ -16,6 +16,7 @@ public class Anotacao extends AppCompatActivity {
     private EditText editTextData;
     private EditText editTextSaldoPosOP;
     private EditText editTextObservacao;
+    private TextView textViewLucroPrejuizo;
 
 
     private Button buttonSalvarAnotacao;
@@ -31,8 +32,10 @@ public class Anotacao extends AppCompatActivity {
         editTextSaldoPosOP = (EditText) findViewById(R.id.editTextSaldoPosOP);
         editTextObservacao = (EditText) findViewById(R.id.editTextObservacao);
 
+        textViewLucroPrejuizo = (TextView) findViewById(R.id.textViewLucroPrejuizo);
 
-        buttonSalvarAnotacao = (Button) findViewById(R.id.buttonSalvarAnotacao);
+
+        buttonSalvarAnotacao = (Button) findViewById(R.id.buttonSalvarAlteracao);
 
         this.clickNoBotaoSalvarListener();
 
@@ -41,7 +44,6 @@ public class Anotacao extends AppCompatActivity {
         buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final TextView textViewLucroPrejuizo = (TextView) findViewById(R.id.textViewLucroPrejuizo);
                 textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
             }
         });
@@ -97,6 +99,11 @@ public class Anotacao extends AppCompatActivity {
         if(editTextSaldoPosOP.getText().toString().isEmpty() == false){
             double saldoPosOp = Double.parseDouble(this.editTextSaldoPosOP.getText().toString());
             this.anotacaoDiario.setSaldoPosOp(saldoPosOp);
+        } else {
+            return null;
+        }
+        if(textViewLucroPrejuizo.getText().toString().isEmpty() == false){
+            this.anotacaoDiario.setLucroPrejuizo((this.textViewLucroPrejuizo.getText().toString()));
         } else {
             return null;
         }
