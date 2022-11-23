@@ -1,8 +1,5 @@
 package com.example.app;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +9,14 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 
 import java.util.List;
 
@@ -25,6 +30,8 @@ public class Relatorio extends AppCompatActivity {
 
     public TextView textViewSaldoAtual;
 
+    public DrawerLayout drawerLayout;
+
 
 
 
@@ -32,6 +39,14 @@ public class Relatorio extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
+
+        drawerLayout = findViewById(R.id.nav_view);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout, toolbar, R.string.navigation_draw_open,R.string.navigation_draw_close);
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
 
         textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
@@ -137,6 +152,15 @@ public class Relatorio extends AppCompatActivity {
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
 }

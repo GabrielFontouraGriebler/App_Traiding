@@ -29,6 +29,9 @@
         </activity>
         <activity
             android:name=".Relatorio"
+
+            android:theme="@style/AppTheme.NoActionBar"
+
             android:exported="true"
             android:label="Relatório">
             <intent-filter>
