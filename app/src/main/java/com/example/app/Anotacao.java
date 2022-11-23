@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,9 +15,10 @@ public class Anotacao extends AppCompatActivity {
 
 
     private EditText editTextData;
-    private EditText editTextSaldoPosOP;
+    public EditText editTextSaldoPosOP;
     private EditText editTextObservacao;
     private TextView textViewLucroPrejuizo;
+
 
 
     private Button buttonSalvarAnotacao;
@@ -44,6 +46,7 @@ public class Anotacao extends AppCompatActivity {
         buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
             }
         });
@@ -70,6 +73,7 @@ public class Anotacao extends AppCompatActivity {
 
                         Toast.makeText(Anotacao.this, "Anotação salva com sucesso", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Anotacao.this, Relatorio.class);
+                        intent.putExtra("Saldo", editTextSaldoPosOP.getText().toString());
                         startActivity(intent);
 
                     }else{

@@ -46,11 +46,15 @@ public class AdapterListaAnotacao extends BaseAdapter {
 
         TextView textViewDataAnotacao = (TextView) v.findViewById(R.id.textViewDataAnotacao);
         TextView textViewSaldoPosOp = (TextView) v.findViewById(R.id.textViewSaldoPosOp);
+
+
         TextView textViewLucroPrejuizo = (TextView) v.findViewById(R.id.textViewLucroPrejuizo);
 
         textViewDataAnotacao.setText(String.valueOf(this.AnotacaoList.get(posicao).getData()));
         textViewSaldoPosOp.setText(String.valueOf(this.AnotacaoList.get(posicao).getSaldoPosOp()));
         textViewLucroPrejuizo.setText(String.valueOf(this.AnotacaoList.get(posicao).getLucroPrejuizo()));
+
+
 
         return v;
     }

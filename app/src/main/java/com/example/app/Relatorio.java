@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,11 +23,22 @@ public class Relatorio extends AppCompatActivity {
     private List<AnotacaoDiario> anotacaoList;
     private AdapterListaAnotacao adapterListaAnotacao;
 
+    public TextView textViewSaldoAtual;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
+
+
+        textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
+        String valor = getIntent().getStringExtra("Saldo");
+        textViewSaldoAtual.setText(valor);
+
+
 
         ConexaoSQLiteDiario conexaoSQLiteDiario = ConexaoSQLiteDiario.getInstancia(this);
 
@@ -120,7 +132,11 @@ public class Relatorio extends AppCompatActivity {
             }
         });
 
+
+
+
     }
+
 
 
 }
