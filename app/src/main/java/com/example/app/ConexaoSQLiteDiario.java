@@ -37,6 +37,19 @@ public class ConexaoSQLiteDiario extends SQLiteOpenHelper {
                         ")";
         sqLiteDatabase.execSQL(sqlTabelaDiario);
 
+        String sqlTablePlanejamento =
+                "CREATE TABLE IF NOT EXISTS planejamento" +
+                        "(" +
+                        "id_planejamento INTEGER PRIMARY KEY autoincrement," +
+                        "data_inicial DATE," +
+                        "data_final DATE," +
+                        "saldo REAL," +
+                        "porcentagem REAL," +
+                        "saldo_perda REAL," +
+                        "saldo_ganho REAL" +
+                        ")";
+        sqLiteDatabase.execSQL(sqlTablePlanejamento);
+
     }
 
     @Override

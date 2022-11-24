@@ -14,8 +14,16 @@ public class AnotacaoCtrl {
         return this.anotacaoDAO.salvarAnotacaoDAO(aAnotacaoDiario);
     }
 
+    public long salvarPlanejamentoCtrl(PlanejamentoClass aPlanejamentoClass){
+        return this.anotacaoDAO.salvarPlanejamentoDAO(aPlanejamentoClass);
+    }
+
     public List<AnotacaoDiario> getListaAnotacaoCtrl(){
         return this.anotacaoDAO.getListaAnotacaoDAO();
+    }
+
+    public List<PlanejamentoClass> getPlanejamentoCtrl(){
+        return this.anotacaoDAO.getListaPlanejamentoDAO();
     }
 
     public boolean excluirAnotacaoCtrl(long pIdProduto){

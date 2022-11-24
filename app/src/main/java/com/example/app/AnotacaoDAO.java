@@ -16,6 +16,36 @@ public class AnotacaoDAO {
         this.conexaoSQLiteDiario = conexaoSQLiteDiario;
     }
 
+    public long salvarPlanejamentoDAO(PlanejamentoClass aPlanejamentoClass){
+
+        SQLiteDatabase db = conexaoSQLiteDiario.getWritableDatabase();
+
+        try {
+
+            ContentValues values = new ContentValues();
+            values.put("id_planejamento", aPlanejamentoClass.getIdPlanejamento());
+            values.put("data_inicial", aPlanejamentoClass.getDataInicial());
+            values.put("data_final", aPlanejamentoClass.getDataFinal());
+            values.put("saldo", aPlanejamentoClass.getSaldo());
+            values.put("porcentagem", aPlanejamentoClass.getPorcentagem());
+            values.put("saldo_perda", aPlanejamentoClass.getPerda());
+            values.put("saldo_ganho", aPlanejamentoClass.getGanho());
+
+            long idPlanejamentoInserido = db.insert("planejamento", null, values);
+
+            return idPlanejamentoInserido;
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (db != null){
+                db.close();
+            }
+        }
+
+        return 0;
+    }
+
     public long salvarAnotacaoDAO(AnotacaoDiario aAnotacaoDiario){
 
         SQLiteDatabase db = conexaoSQLiteDiario.getWritableDatabase();
@@ -44,6 +74,48 @@ public class AnotacaoDAO {
 
         return 0;
 
+    }
+
+    public List<PlanejamentoClass> getListaPlanejamentoDAO(){
+
+        List<PlanejamentoClass> ListaPlanejamento = new ArrayList<>();
+        SQLiteDatabase db = null;
+        Cursor cursor;
+
+        String query = "SELECT * FROM planejamento;";
+
+        try {
+
+            db = this.conexaoSQLiteDiario.getReadableDatabase();
+
+            cursor = db.rawQuery(query, null);
+
+            if (cursor.moveToFirst()){
+
+                PlanejamentoClass planejamentoClassTemp = null;
+
+                do {
+                    planejamentoClassTemp = new PlanejamentoClass();
+                    planejamentoClassTemp.setIdPlanejamento(cursor.getInt(0));
+                    planejamentoClassTemp.setDataInicial(cursor.getInt(1));
+                    planejamentoClassTemp.setDataFinal(cursor.getInt(2));
+                    planejamentoClassTemp.setSaldo(cursor.getDouble(3));
+                    planejamentoClassTemp.setPorcentagem(cursor.getDouble(4));
+                    planejamentoClassTemp.setPerda(cursor.getDouble(5));
+                    planejamentoClassTemp.setGanho(cursor.getDouble(6));
+
+                    ListaPlanejamento .add(planejamentoClassTemp);
+                }while (cursor.moveToNext());
+            }
+        }catch (Exception e){
+            Log.d("ERRO LISTA PLANEJAMENTO", "ERRO AO RETORNAR PLANEJAMENTOS");
+            return null;
+        }finally {
+            if (db != null);
+            db.close();
+        }
+
+        return ListaPlanejamento;
     }
 
     public List<AnotacaoDiario> getListaAnotacaoDAO(){
