@@ -82,7 +82,7 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
 
 
 
-        this.ListViewAnotacoes = (ListView) findViewById(R.id.ListViewAnotacoes);
+        this. ListViewAnotacoes = (ListView) findViewById(R.id.ListViewAnotacoes);
 
         this.adapterListaAnotacao = new AdapterListaAnotacao(Relatorio.this, this.anotacaoList);
 

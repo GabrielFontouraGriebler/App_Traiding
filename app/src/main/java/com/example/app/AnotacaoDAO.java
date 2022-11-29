@@ -104,7 +104,7 @@ public class AnotacaoDAO {
                     planejamentoClassTemp.setPerda(cursor.getDouble(5));
                     planejamentoClassTemp.setGanho(cursor.getDouble(6));
 
-                    ListaPlanejamento .add(planejamentoClassTemp);
+                    ListaPlanejamento.add(planejamentoClassTemp);
                 }while (cursor.moveToNext());
             }
         }catch (Exception e){
