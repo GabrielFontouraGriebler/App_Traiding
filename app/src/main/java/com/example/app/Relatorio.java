@@ -33,10 +33,9 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
     private List<AnotacaoDiario> anotacaoList;
     private AdapterListaAnotacao adapterListaAnotacao;
 
-    public TextView textViewSaldoAtual;
+    //public TextView textViewSaldoAtual;
 
     private DrawerLayout drawerLayout;
-
 
 
 
@@ -45,6 +44,7 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
 
+        //barra lateral daqui
         drawerLayout = findViewById(R.id.nav_view);
         Toolbar toolbar = findViewById(R.id.toolbar);
         NavigationView navigationView = findViewById(R.id.navigation_view);
@@ -53,12 +53,13 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        //até aqui
 
 
 
-        textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
-        String valor = getIntent().getStringExtra("Saldo");
-        textViewSaldoAtual.setText(valor);
+//        textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
+//        String valor = getIntent().getStringExtra("Saldo");
+//        textViewSaldoAtual.setText(valor);
 
 
 
@@ -69,7 +70,7 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
         this.buttonAnotacao.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // ele executa o metodo onClick a cima
+                //botão de entrar na nova anotação
 
                 Intent intent = new Intent(Relatorio.this, Anotacao.class);
                 startActivity(intent);
@@ -158,6 +159,9 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
 
 
     }
+
+
+    //Daqui pra baixo é refente a barra lateral
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

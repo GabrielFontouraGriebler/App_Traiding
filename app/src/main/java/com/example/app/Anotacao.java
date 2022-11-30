@@ -73,7 +73,7 @@ public class Anotacao extends AppCompatActivity {
 
                         Toast.makeText(Anotacao.this, "Anotação salva com sucesso", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Anotacao.this, Relatorio.class);
-                        intent.putExtra("Saldo", editTextSaldoPosOP.getText().toString());
+                        //intent.putExtra("Saldo", editTextSaldoPosOP.getText().toString());
                         startActivity(intent);
 
                     }else{

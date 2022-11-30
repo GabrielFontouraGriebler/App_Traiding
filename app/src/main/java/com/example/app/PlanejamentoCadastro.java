@@ -38,6 +38,8 @@ public class PlanejamentoCadastro extends AppCompatActivity {
 
         buttonSalvarPlanejamento = (Button) findViewById(R.id.buttonSalvarPlanejamento);
 
+        this.clickNoBotaoSalvarListener();
+
 
     }
 

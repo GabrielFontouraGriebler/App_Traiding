@@ -49,14 +49,14 @@ public class AdapterListaPlanejamento extends BaseAdapter {
         TextView textViewDataInicialPlan = (TextView) v.findViewById(R.id.textViewDataInicialPlan);
         TextView textViewDataFinalPlan = (TextView) v.findViewById(R.id.textViewDataFinalPlan);
         TextView textViewSaldoPlan = (TextView) v.findViewById(R.id.textViewSaldoPlan);
-        TextView textViewPorceentagemPlan = (TextView) v.findViewById(R.id.textViewPorceentagemPlan);
+        TextView textViewPorcentagemPlan = (TextView) v.findViewById(R.id.textViewPorcentagemPlan);
         TextView textViewPerdaPlan = (TextView) v.findViewById(R.id.textViewPerdaPlan);
         TextView textViewGanhoPlan = (TextView) v.findViewById(R.id.textViewGanhoPlan);
 
         textViewDataInicialPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getDataInicial()));
         textViewDataFinalPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getDataFinal()));
         textViewSaldoPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getSaldo()));
-        textViewPorceentagemPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getPorcentagem()));
+        textViewPorcentagemPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getPorcentagem()));
         textViewPerdaPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getPerda()));
         textViewGanhoPlan.setText(String.valueOf(this.PlanejamentoList.get(posicao).getGanho()));
 
