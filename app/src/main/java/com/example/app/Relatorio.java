@@ -33,7 +33,7 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
     private List<AnotacaoDiario> anotacaoList;
     private AdapterListaAnotacao adapterListaAnotacao;
 
-    //public TextView textViewSaldoAtual;
+    public TextView textViewSaldoAtual;
 
     private DrawerLayout drawerLayout;
 
@@ -55,11 +55,7 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
         toggle.syncState();
         //até aqui
 
-
-
-//        textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
-//        String valor = getIntent().getStringExtra("Saldo");
-//        textViewSaldoAtual.setText(valor);
+       textViewSaldoAtual = (TextView) findViewById(R.id.textViewSaldoAtual);
 
 
 
@@ -79,6 +75,12 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
 
         AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Relatorio.this));
         anotacaoList = anotacaoCtrl.getListaAnotacaoCtrl();
+
+        if (anotacaoList.size()>0) {
+            int ultimaPosicao = anotacaoList.size() - 1;
+            AnotacaoDiario anotacaoDiario = anotacaoList.get(ultimaPosicao);
+            textViewSaldoAtual.setText(Double.toString(anotacaoDiario.getSaldoPosOp()));
+        }
 
 
 
@@ -121,6 +123,12 @@ public class Relatorio extends AppCompatActivity implements NavigationView.OnNav
                         if(excluiu == true){
 
                             adapterListaAnotacao.removerAnotacao(posicao);
+                            textViewSaldoAtual.setText("");
+                            if (anotacaoList.size()>0) {
+                                int ultimaPosicao = anotacaoList.size() - 1;
+                                AnotacaoDiario anotacaoDiario = anotacaoList.get(ultimaPosicao);
+                                textViewSaldoAtual.setText(Double.toString(anotacaoDiario.getSaldoPosOp()));
+                            }
 
                             Toast.makeText(Relatorio.this, "Anotação excluida com sucesso", Toast.LENGTH_SHORT).show();
                         }else{

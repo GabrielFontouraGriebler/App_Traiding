@@ -11,8 +11,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class Anotacao extends AppCompatActivity {
 
+    private ListView ListViewAnotacoes;
+    private List<AnotacaoDiario> anotacaoList;
+    private AdapterListaAnotacao adapterListaAnotacao;
 
     private EditText editTextData;
     public EditText editTextSaldoPosOP;
@@ -25,6 +30,7 @@ public class Anotacao extends AppCompatActivity {
 
     private AnotacaoDiario  anotacaoDiario;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +42,11 @@ public class Anotacao extends AppCompatActivity {
 
         textViewLucroPrejuizo = (TextView) findViewById(R.id.textViewLucroPrejuizo);
 
-
         buttonSalvarAnotacao = (Button) findViewById(R.id.buttonSalvarAlteracao);
+
+        AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Anotacao.this));
+        anotacaoList = anotacaoCtrl.getListaAnotacaoCtrl();
+
 
         this.clickNoBotaoSalvarListener();
 
@@ -46,8 +55,13 @@ public class Anotacao extends AppCompatActivity {
         buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (anotacaoList.size()>0) {
+                    int ultimaPosicao = anotacaoList.size() - 1;
+                    AnotacaoDiario anotacaoDiario = anotacaoList.get(ultimaPosicao);
+                    textViewLucroPrejuizo.setText(Double.toString(anotacaoDiario.getSaldoPosOp()));
+                }
 
-                textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
+               // textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
             }
         });
 
@@ -67,6 +81,8 @@ public class Anotacao extends AppCompatActivity {
 
                     AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(Anotacao.this));
                     long idAnotacao = anotacaoCtrl.salvarAnotacaoCtrl(anotacaoACadastrar);
+
+
 
 
                     if(idAnotacao > 0){

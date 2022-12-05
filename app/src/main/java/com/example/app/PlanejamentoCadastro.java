@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,18 +51,21 @@ public class PlanejamentoCadastro extends AppCompatActivity {
             public void onClick(View view) {
                 PlanejamentoClass planejamentoACadastrar = getPlanejamentosDoFormulario();
 
+
+
                 if (planejamentoACadastrar != null){
 
                     AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(PlanejamentoCadastro.this));
                     long idPlanejamento =  anotacaoCtrl.salvarPlanejamentoCtrl(planejamentoACadastrar);
 
-                    if (idPlanejamento > 0){
+                    Log.e(String.valueOf(idPlanejamento),"idPlanejamento");
+                    if (idPlanejamento >= 0){
 
                         Toast.makeText(PlanejamentoCadastro.this, "Planejamento salvo com sucesso", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(PlanejamentoCadastro.this, Planejamento.class);
                         startActivity(intent);
 
-                    }else {
+                    }else{
                         Toast.makeText(PlanejamentoCadastro.this, "Planejamento não pode ser salvo", Toast.LENGTH_LONG).show();
                     }
                 }else {
@@ -95,19 +99,19 @@ public class PlanejamentoCadastro extends AppCompatActivity {
         }
         if (editTextPorcentagem.getText().toString().isEmpty() == false){
             double porcentagem = Double.parseDouble(this.editTextPorcentagem.getText().toString());
-            this.planejamentoClass.setSaldo(porcentagem);
+            this.planejamentoClass.setPorcentagem(porcentagem);
         }else {
             return null;
         }
         if (editTextSaldoPerda.getText().toString().isEmpty() == false){
             double saldoPerda = Double.parseDouble(this.editTextSaldoPerda.getText().toString());
-            this.planejamentoClass.setSaldo(saldoPerda);
+            this.planejamentoClass.setPerda(saldoPerda);
         }else {
             return null;
         }
         if (editTextSaldoGanho.getText().toString().isEmpty() == false){
             double saldoGanho = Double.parseDouble(this.editTextSaldoGanho.getText().toString());
-            this.planejamentoClass.setSaldo(saldoGanho);
+            this.planejamentoClass.setGanho(saldoGanho);
         }else {
             return null;
         }
