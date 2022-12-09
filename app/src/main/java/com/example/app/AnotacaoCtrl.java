@@ -26,6 +26,10 @@ public class AnotacaoCtrl {
         return this.anotacaoDAO.getListaPlanejamentoDAO();
     }
 
+    public boolean excluirPlanejamentoCtrl(long pIdPlanejamento){
+        return this.anotacaoDAO.excluirPlanejamentoDAO(pIdPlanejamento);
+    }
+
     public boolean excluirAnotacaoCtrl(long pIdProduto){
         return this.anotacaoDAO.excluirAnotacaoDAO(pIdProduto);
     }

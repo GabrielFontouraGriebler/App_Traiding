@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class AntacaoEditar extends AppCompatActivity {
 
@@ -17,6 +20,10 @@ public class AntacaoEditar extends AppCompatActivity {
     private EditText editTextObservacao;
 
     private TextView textViewLucroPrejuizo;
+
+    private ListView ListViewAnotacoes;
+    private List<AnotacaoDiario> anotacaoList;
+    private AdapterListaAnotacao adapterListaAnotacao;
 
 
     private Button buttonSalvarAlteracoes;
@@ -33,6 +40,9 @@ public class AntacaoEditar extends AppCompatActivity {
         this.editTextSaldoPosOP = (EditText) findViewById(R.id.editTextSaldoPosOP);
         this.editTextObservacao = (EditText) findViewById(R.id.editTextObservacao);
 
+        AnotacaoCtrl anotacaoCtrl = new AnotacaoCtrl(ConexaoSQLiteDiario.getInstancia(AntacaoEditar.this));
+        anotacaoList = anotacaoCtrl.getListaAnotacaoCtrl();
+
         textViewLucroPrejuizo = (TextView) findViewById(R.id.textViewLucroPrejuizo);
 
         //Botão que vai calcular e projetar as informações de lucro e prejuizo no text view
@@ -40,10 +50,19 @@ public class AntacaoEditar extends AppCompatActivity {
         buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
+                if (anotacaoList.size()>0) {
+                    int ultimaPosicao = anotacaoList.size() - 1;
+                    AnotacaoDiario anotacaoDiario = anotacaoList.get(ultimaPosicao);
+                    int valor1 = Integer.parseInt(editTextSaldoPosOP.getText().toString());
+//                    int valor2 = ultimaPosicao;
+//                    int resultado1 = valor1 - valor2;
+
+
+                    textViewLucroPrejuizo.setText(Double.toString(valor1 - anotacaoDiario.getSaldoPosOp()));
+                }
+
             }
         });
-
 
 
         this.buttonSalvarAlteracoes = (Button) findViewById(R.id.buttonSalvarAlteracao);

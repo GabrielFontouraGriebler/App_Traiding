@@ -161,6 +161,28 @@ public class AnotacaoDAO {
         return ListaAnotacao;
     }
 
+    public boolean excluirPlanejamentoDAO(long pIdPlanejamento){
+        SQLiteDatabase db = null;
+
+        try{
+            db = this.conexaoSQLiteDiario.getWritableDatabase();
+
+            db.delete(
+                    "planejamento",
+                    "id_planejamento = ?",
+                    new String[]{String.valueOf(pIdPlanejamento)}
+            );
+        }catch (Exception e){
+            Log.d("PLANEJAMENTODAO", "NAO FOI POSSIVEL DELETAR PLAN");
+            return false;
+        }finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+        return true;
+    }
+
     public boolean excluirAnotacaoDAO(long pIdAnotacao){
         SQLiteDatabase db = null;
 

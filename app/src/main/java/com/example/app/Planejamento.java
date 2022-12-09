@@ -51,66 +51,66 @@ public class Planejamento extends AppCompatActivity {
 
         this.ListViewPlanejamento.setAdapter(this.adapterListaPlanejamento);
 
-//        this.ListViewPlanejamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-//
-//                final PlanejamentoClass planejamentoSelecionado = (PlanejamentoClass) adapterListaPlanejamento.getItem(posicao);
-//
-//                Toast.makeText(Planejamento.this, "Planejamento" + planejamentoSelecionado.getDataInicial(), Toast.LENGTH_SHORT).show();
-//
-//                AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(Planejamento.this);
-//
-//                janelaDeEscolha.setTitle("Escolha:");
-//                janelaDeEscolha.setMessage("O que deseja fazer com o planejamento selecionado");
-//
-//                janelaDeEscolha.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int id) {
-//                        dialogInterface.cancel();
-//                    }
-//                });
-//
-//                janelaDeEscolha.setNegativeButton("Excluir", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int id) {
-//                        boolean excluiu = anotacaoCtrl.excluirPlanejamentoCtrl(planejamentoSelecionado.getIdPlanejamento());
-//
-//                        dialogInterface.cancel();
-//
-//                        if (excluiu == true){
-//
-//                            adapterListaPlanejamento.removerPlanejamento(posicao);
-//
-//                            Toast.makeText(Planejamento.this, "Planejamento excluido com sucesso", Toast.LENGTH_SHORT).show();
-//                        }else{
-//                            Toast.makeText(Planejamento.this, "Erro ao excluir Planejamento", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-//
+        this.ListViewPlanejamento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+
+                final PlanejamentoClass planejamentoSelecionado = (PlanejamentoClass) adapterListaPlanejamento.getItem(posicao);
+
+                Toast.makeText(Planejamento.this, "Planejamento" + planejamentoSelecionado.getDataInicial(), Toast.LENGTH_SHORT).show();
+
+                AlertDialog.Builder janelaDeEscolha = new AlertDialog.Builder(Planejamento.this);
+
+                janelaDeEscolha.setTitle("Escolha:");
+                janelaDeEscolha.setMessage("O que deseja fazer com o planejamento selecionado");
+
+                janelaDeEscolha.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+                janelaDeEscolha.setNegativeButton("Excluir", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        boolean excluiu = anotacaoCtrl.excluirPlanejamentoCtrl(planejamentoSelecionado.getIdPlanejamento());
+
+                        dialogInterface.cancel();
+
+                        if (excluiu == true){
+
+                            adapterListaPlanejamento.removerPlanejamento(posicao);
+
+                            Toast.makeText(Planejamento.this, "Planejamento excluido com sucesso", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(Planejamento.this, "Erro ao excluir Planejamento", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
 //                janelaDeEscolha.setPositiveButton("Detalhes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Bundle bundleDadosPlanejamento = new Bundle();
-//
-//                        bundleDadosPlanejamento.putInt("data_inicial", planejamentoSelecionado.getDataInicial());
-//                        bundleDadosPlanejamento.putInt("data_final", planejamentoSelecionado.getDataFinal());
-//                        bundleDadosPlanejamento.putDouble("saldo", planejamentoSelecionado.getSaldo());
-//                        bundleDadosPlanejamento.putDouble("porcentagem", planejamentoSelecionado.getPorcentagem());
-//                        bundleDadosPlanejamento.putDouble("saldo_perda", planejamentoSelecionado.getPerda());
-//                        bundleDadosPlanejamento.putDouble("saldo_ganho", planejamentoSelecionado.getGanho());
-//
-//                        Intent intentEditarPlanejamento = new Intent(Planejamento.this, PlanejamentoEditar.class);
-//                        intentEditarPlanejamento.putExtras(bundleDadosPlanejamento);
-//                        startActivity(intentEditarPlanejamento);
-//                    }
+////                    @Override
+////                    public void onClick(DialogInterface dialogInterface, int i) {
+////                        Bundle bundleDadosPlanejamento = new Bundle();
+////
+////                        bundleDadosPlanejamento.putInt("data_inicial", planejamentoSelecionado.getDataInicial());
+////                        bundleDadosPlanejamento.putInt("data_final", planejamentoSelecionado.getDataFinal());
+////                        bundleDadosPlanejamento.putDouble("saldo", planejamentoSelecionado.getSaldo());
+////                        bundleDadosPlanejamento.putDouble("porcentagem", planejamentoSelecionado.getPorcentagem());
+////                        bundleDadosPlanejamento.putDouble("saldo_perda", planejamentoSelecionado.getPerda());
+////                        bundleDadosPlanejamento.putDouble("saldo_ganho", planejamentoSelecionado.getGanho());
+////
+////                        Intent intentEditarPlanejamento = new Intent(Planejamento.this, PlanejamentoEditar.class);
+////                        intentEditarPlanejamento.putExtras(bundleDadosPlanejamento);
+////                        startActivity(intentEditarPlanejamento);
+////                    }
 ////                });
-//
-//                janelaDeEscolha.create().show();
-//
-//            }
-//        });
+
+                janelaDeEscolha.create().show();
+
+            }
+        });
 
     }
 

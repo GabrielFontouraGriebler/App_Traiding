@@ -8,6 +8,20 @@
     tools:context=".Anotacao">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="26dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="12dp"
+        android:text="R$:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLucroPrejuizo"
+        app:layout_constraintEnd_toStartOf="@+id/textViewLucroPrejuizo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewLucroPrejuizo"
+        app:layout_constraintVertical_bias="1.0" />
+
     <EditText
         android:id="@+id/editTextData"
         android:layout_width="match_parent"

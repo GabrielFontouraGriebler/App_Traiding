@@ -24,6 +24,8 @@ public class Anotacao extends AppCompatActivity {
     private EditText editTextObservacao;
     private TextView textViewLucroPrejuizo;
 
+    float conta1;
+
 
 
     private Button buttonSalvarAnotacao;
@@ -55,13 +57,19 @@ public class Anotacao extends AppCompatActivity {
         buttonCalculaLucroPrejuizo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (anotacaoList.size()>0) {
+               if (anotacaoList.size()>0) {
                     int ultimaPosicao = anotacaoList.size() - 1;
                     AnotacaoDiario anotacaoDiario = anotacaoList.get(ultimaPosicao);
-                    textViewLucroPrejuizo.setText(Double.toString(anotacaoDiario.getSaldoPosOp()));
+                    float valor1 = Float.parseFloat(editTextSaldoPosOP.getText().toString());
+//                    int valor2 = ultimaPosicao;
+//                    int resultado1 = valor1 - valor2;
+
+
+                    textViewLucroPrejuizo.setText(Double.toString(valor1 - anotacaoDiario.getSaldoPosOp()));
+
                 }
 
-               // textViewLucroPrejuizo.setText(editTextSaldoPosOP.getText().toString());
+
             }
         });
 
